@@ -1838,7 +1838,7 @@ type BulkDeleteResult struct {
 func (c *Connection) doBulkDelete(objects []string) (result BulkDeleteResult, err error) {
 	var buffer bytes.Buffer
 	for _, s := range objects {
-		buffer.WriteString(url.QueryEscape(s) + "\n")
+		buffer.WriteString(s + "\n")
 	}
 	resp, headers, err := c.storage(RequestOpts{
 		Operation:  "DELETE",
